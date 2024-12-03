@@ -1,7 +1,7 @@
 // GLOBAL VARIABLES
 const baseUrl = `http://localhost:3000/ramens`;
 
-// FOR POTENTIAL CLOSURES
+// just in case
 let selectedRamen;
 
 // DOM SELECTORS
@@ -13,13 +13,17 @@ const ratingDisplay = document.querySelector("#rating-display");
 const commentDisplay = document.querySelector("#comment-display");
 
 //FETCH FUNCTIONS
-function getAllRamens() {
-  return fetch(baseUrl).then((resp) => {
+async function getAllRamens() {
+  try {
+    const resp = await fetch(baseUrl);
     if (!resp.ok) {
       throw new Error(resp.statusText);
     }
-    return resp.json();
-  });
+    return await resp.json();
+  } catch (error) {
+    console.error("Error fetching ramens:", error);
+    throw error;
+  }
 }
 
 // RENDER FUNCTIONS
@@ -51,11 +55,19 @@ const handleClick = (ramen) => {
 
 const handleSubmit = (e) => {
   e.preventDefault();
+  const newRamen = {
+    name: e.target.name.value,
+    restaurant: e.target.restaurant.value,
+    image: e.target.image.value,
+    rating: e.target.rating.value,
+    comment: e.target["new-comment"].value,
+  };
+  renderRamen(newRamen);
 };
 
 // INITIALIZERS
 const addSubmitListener = () => {
-  // add code
+  document.querySelector("#new-ramen").addEventListener("submit", handleSubmit);
 };
 
 const main = () => {
@@ -64,3 +76,9 @@ const main = () => {
   handleClick();
 };
 main();
+
+export { addSubmitListener, displayRamens, handleClick, main };
+
+// ran out of time but sounded fun XD... this part would involve saving data to a database and retrieving it when the page is refreshed
+const ramenList = [];
+ramenList.push(selectedRamen);

@@ -23,20 +23,20 @@ As a user, I should
 
   2.Click on ramen image in menu and see details in ramen-detail div
 
-- [] select existing elements that will display ramen data
-- [] attach event listener to the ramen images
-- [] use handleClick as event handler to render
+- [x] select existing elements that will display ramen data
+- [x] attach event listener to the ramen images
+- [x] use handleClick as event handler to render
 
   3.Fill in the new ramen form and see a new ramen added to the menu
 
-- [] select the form
+- [x] select the form
 - [x] create (will happen in renderRamenForm())
-- [] call addSubmitListener() to attach event listener to form
-- [] handle the submit event with handleSubmit
-- [] prevent default behavior
-- [] get form values from event.target
-- [] add values from for to new ramen object
-- [] call renderRamen() with the new ramen object
+- [x] call addSubmitListener() to attach event listener to form
+- [x] handle the submit event with handleSubmit
+- [x] prevent default behavior
+- [x] get form values from event.target
+- [x] add values from for to new ramen object
+- [x] call renderRamen() with the new ramen object
 
 ### Data shape
 
